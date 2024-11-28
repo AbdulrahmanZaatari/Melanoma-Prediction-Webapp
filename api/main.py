@@ -16,6 +16,12 @@ CLASS_NAMES = ['benign', 'malignant']  #classes
 # Initialize FastAPI
 app = FastAPI()
 
+app.mount("/static", StaticFiles(directory="dist/assets"), name="static")
+
+@app.get("/")
+async def serve_frontend():
+    return FileResponse("dist/index.html")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173"],  
