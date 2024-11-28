@@ -8,10 +8,8 @@ import {
 } from "@mui/material";
 import ClearIcon from '@mui/icons-material/Clear';
 import axios from "axios";
-
-// Assets (adjusted for deployed paths)
-const logoPic = "/static/assets/logo-CTETBh_k.jpg"; // Updated to use deployed static path
-const bgImage = "/static/assets/bg-DRFivgSZ.avif"; // Updated to use deployed static path
+import bgImage from './assets/bg.avif'; // Imported directly from assets folder
+import logoImage from './assets/logo.jpg'; // Imported directly from assets folder
 
 // Styled button with custom hover effect
 const ColorButton = styled(Button)(({ theme }) => ({
@@ -24,7 +22,7 @@ const ColorButton = styled(Button)(({ theme }) => ({
 
 // Main container with a background image and styles for the main content area
 const MainContainer = styled(Container)(() => ({
-  backgroundImage: `url(${bgImage})`,
+  backgroundImage: `url(${bgImage})`, // Uses imported bgImage for the background
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center',
   backgroundSize: 'cover',
@@ -132,7 +130,7 @@ export const ImageUpload = () => {
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', gap: 2 }}>
             Fundamentals of Deep Learning: Melanoma Detection
-            <Avatar src={logoPic} />
+            <Avatar src={logoImage} /> {/* Uses imported logoImage */}
           </Typography>
         </Toolbar>
       </AppBar>
