@@ -28,7 +28,7 @@ app.add_middleware(
 )
 
 # Serve static files for the React frontend
-app.mount("/static", StaticFiles(directory="dist/assets"), name="static")
+app.mount("/static", StaticFiles(directory="dist"), name="static")
 
 @app.get("/")
 async def serve_frontend():
