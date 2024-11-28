@@ -9,6 +9,7 @@ import numpy as np
 from io import BytesIO
 from PIL import Image
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
 # Define paths and class names
 MODEL_PATH = "saved_models/1.pth"  # Adjusted path for the model file
@@ -79,6 +80,7 @@ async def predict(file: UploadFile = File(...)):
     # Return prediction results
     return {"class": predicted_class, "confidence": confidence}
 
+
 if __name__ == "__main__":
-    # Run the app on Render's expected host and port
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.getenv("PORT", 8000))  # Default to 8000 if PORT is not set
+    uvicorn.run(app, host="0.0.0.0", port=port)
